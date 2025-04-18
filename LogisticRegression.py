@@ -59,18 +59,19 @@ class LogisticRegression:
         plt.show()
 
 # Example usage
-data = sklearn.datasets.load_breast_cancer()
-x = data.data
-y = data.target
-scaler = sklearn.preprocessing.StandardScaler()
-X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size=0.2)
-scaler.fit(X_train)
-X_train = scaler.transform(X_train)
-X_test = scaler.transform(X_test)
+if __name__ == "__main__":
+    data = sklearn.datasets.load_breast_cancer()
+    x = data.data
+    y = data.target
+    scaler = sklearn.preprocessing.StandardScaler()
+    X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size=0.2)
+    scaler.fit(X_train)
+    X_train = scaler.transform(X_train)
+    X_test = scaler.transform(X_test)
 
-model = LogisticRegression(learning_rate = 0.001, num_iterations = 100000)
-model.train(X_train, y_train)
-predictions = model.predict(X_test)
-accuracy = model.get_accuracy(y_test, predictions)
-print(f"Accuracy: {accuracy}")
+    model = LogisticRegression(learning_rate = 0.001, num_iterations = 100000)
+    model.train(X_train, y_train)
+    predictions = model.predict(X_test)
+    accuracy = model.get_accuracy(y_test, predictions)
+    print(f"Accuracy: {accuracy}")
 
